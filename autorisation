@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        
+        <form>
+            <p>Логин:</p>
+            <input type="text" name="login">
+            <p>Пароль:</p>
+            <input type="password" name="pass">
+            <br><br><br>
+            <input type="submit" name="submit">
+        </form>
+        
+        <br><br>
+        
+        <?php
+            if (isset($_REQUEST['login'])) {
+                if (isset($_REQUEST['pass'])) {
+                    $login = 'abc';
+                    $pass = '123';
+                    $formlogin = trim($_REQUEST['login']);
+                    $formpass = trim($_REQUEST['pass']);
+                    if (($formlogin == $login) && ($formpass == $pass)) { 
+        ?>
+        
+        <p style="color: #28c142; font-weight: bold"> 
+        <?php
+                        echo 'Вход разрешен!';
+        ?>            
+        </p>
+                
+        <?php
+                    } else {
+        ?>
+        
+        <p style="color: #eb2329; font-weight: bold">
+        <?php
+                        echo 'Пароль неверный!';
+        ?>
+        </p>
+        
+        <?php
+                    }
+                }
+            }
+        ?>
+        </body>
+</html>
