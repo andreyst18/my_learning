@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <?php
+            if (!isset($_REQUEST['age'])) {
+        ?>
+        
+        <p>Ваш возраст:</p>
+        <form>
+            <input type="text" name="age">
+            <input type="submit" name="submit">
+        </form>
+        
+        <?php
+            }
+        ?>
+        
+        <?php
+            if (isset($_REQUEST['age'])) {
+                $age = strip_tags($_REQUEST['age']);
+                $lastSymbol = strlen($age) - 1;
+                if (($age[$lastSymbol] == '1') && ($age != '11')) {
+                    echo "Ваш возраст - $age год.";
+                }
+                elseif (($age[$lastSymbol] > '1') && ($age[$lastSymbol] <= 4)) {
+                echo "Ваш возраст - $age года.";
+                }
+                else {
+                    echo "Ваш возраст - $age лет.";
+                }
+            }
+        ?>
+                
+    </body>
+</html>
