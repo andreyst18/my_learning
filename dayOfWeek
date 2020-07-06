@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Практика</title>
+    </head>
+    <body>
+        <form>
+            <input type="datetime" name="date">
+            <input type="submit" name="submit">            
+        </form>
+        <?php
+            if (isset($_REQUEST['date'])) {
+                $date = $_REQUEST['date'];
+                $arr = explode('.', $date);
+                //var_dump($arr);
+                //timestamp:
+                $timestamp = mktime(0, 0, 0, $arr[1], $arr[0], $arr[2]);
+                $dayOfWeek = date('w', $timestamp);
+                $week = [1 => 'пн', 2 => 'вт', 3 => 'ср', 4 => 'чт', 5 => 'пт', 6 => 'сб', 0 => 'вс'];
+                echo $week[$dayOfWeek];
+            }
+        ?>
+    </body>
+</html>
+
