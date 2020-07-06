@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Практика</title>
+    </head>
+    <body>
+        <form action="action">
+            <p>
+                <input type="date" name="date1">
+            </p>
+            <p>
+                <input type="date" name="date2">
+            </p>
+            <input type="submit" name="submit">
+        </form>
+        
+        <?php
+            if (isset($_REQUEST['date1']) && isset($_REQUEST['date2'])) {
+                $date1 = $_REQUEST['date1'];
+                $date2 = $_REQUEST['date2'];
+                $arr_date1 = explode('-', $date1);
+                $arr_date2 = explode('-', $date2);
+                $date1 = mktime(0, 0, 0, $arr_date1[1], $arr_date1[2], $arr_date1[0]);
+                $date2 = mktime(0, 0, 0, $arr_date2[1], $arr_date2[2], $arr_date2[0]);
+                if ($arr_date1 > $arr_date2) {
+                    echo '<br>' . 'Дата 1 больше';
+                }
+                else {
+                    echo '<br>' . 'Дата 2 больше';
+                }
+            }
+        ?>
+    </body>
+</html>
+
