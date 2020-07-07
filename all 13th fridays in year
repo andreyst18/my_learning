@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Практика</title>
+    </head>
+    <body>
+        <form> 
+            <input type="text" name="year">
+            <input type="submit" name="submit">
+        </form>
+        
+        <?php
+            $arrayOfFridays13th = [];
+            if (isset($_REQUEST['year'])) {
+                $year = $_REQUEST['year'];
+                for ($i = 1; $i <= 12; $i++) {
+                    if (date('w', mktime(0, 0, 0, $i, 13, $year)) == '5') {
+                        $arrayOfFridays13th[] = date('d.m.Y', mktime(0, 0, 0, $i, 13, $year));
+                    }
+                }
+            }
+            var_dump($arrayOfFridays13th);
+        ?>
+    </body>
+</html>
+
