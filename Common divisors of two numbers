@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Практика</title>
+    </head>
+    <body>
+        <?php
+            function getDivisors($arg) {
+                $array_result = [];
+                for ($i = 1; $i <= $arg; $i++) {
+                    if ($arg % $i === 0) {
+                        $array_result[] = $i;
+                    }
+                }
+                return $array_result;
+            }    
+                        
+            function getCommonDivisors($arg1, $arg2) {
+                $arr_arg1 = getDivisors($arg1);
+                $arr_arg2 = getDivisors($arg2);
+                $arr_result = [];
+                if (count($arr_arg1) >= count($arr_arg2)) {
+                    foreach ($arr_arg2 as $element) {
+                        if (in_array($element, $arr_arg1)) {
+                            $arr_result[] = $element;
+                        }
+                    }
+                }
+                elseif (count($arr_arg1) < count($arr_arg2)) {
+                    foreach ($arr_arg1 as $element) {
+                        if (in_array($element, $arr_arg2)) {
+                            $arr_result[] = $element;
+                        }
+                    }
+                }
+                var_dump($arr_arg1);
+                var_dump($arr_arg2);
+                return $arr_result;
+            }
+            
+            var_dump(getCommonDivisors(25, 15));
+        ?>
+    </body>
+</html>
+
