@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Практика</title>
+    </head>
+    <body>
+        <?php
+            function sumArrayElements($arr) {
+                $result = 0;
+                foreach ($arr as $elem) {
+                    $result += $elem;
+                }
+                return $result;
+            }
+        
+            function arrayToString($arr) {
+                $result = '';
+                foreach ($arr as $elem) {
+                    $result .= $elem;
+                }
+                return $result;
+            }
+            
+            function printArray($arr) {
+                $counter = 0;
+                for ($i = 0; $i < count($arr); $i++) {
+                    if ($counter <= 20) {
+                        echo $arr[$i] . '  |  ';
+                        $counter++;
+                    }
+                    else {
+                        echo '<br>';
+                        $counter = 0;
+                    }
+                }
+            }
+
+            $arrayResult = [];
+            for ($i = 1; $i <= 999; $i++) {
+                for ($j = 1; $j <= 999; $j++) {
+                    $arr2 = str_split((string)$i);
+                    $arr1 = str_split((string)$j);
+                    if (sumArrayElements($arr1) == sumArrayElements($arr2)) {
+                        switch (strlen((string)$i)) {
+                            case 1: if (strlen((string)$j) == 1) {
+                                        $arrayResult[] = '00' . $j . '00' . $i;
+                                            break;
+                                    }
+                                    elseif (strlen((string)$j) == 2) {
+                                        $arrayResult[] = '0' .$j . '00' . $i;
+                                            break;
+                                    }                    
+                                    else {
+                                        $arrayResult[] = $j . '00' . $i;
+                                            break;
+                                    }
+                            case 2: if (strlen((string)$j) == 1) {
+                                        $arrayResult[] = '00' . $j . '0' . $i;
+                                            break;
+                                    }
+                                    elseif (strlen((string)$j) == 2) {
+                                        $arrayResult[] = '0' .$j . '0' . $i;
+                                            break;
+                                    }                    
+                                    else {
+                                        $arrayResult[] = $j . '0' . $i;
+                                            break;
+                                    }
+                            default: if (strlen((string)$j) == 1) {
+                                        $arrayResult[] = '00' . $j . $i;
+                                            break;
+                                    }
+                                    elseif (strlen((string)$j) == 2) {
+                                        $arrayResult[] = '0' .$j . $i;
+                                            break;
+                                    }                    
+                                    else {
+                                        $arrayResult[] = $j . $i;
+                                            break;
+                                    }
+                        }
+                    }
+                }
+            }
+            
+            echo 'Total quantity of variations - ' . count($arrayResult) . '<br><br>';
+            printArray($arrayResult);
+        ?>
+    </body>
+</html>
+
