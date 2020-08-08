@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Практика</title>
+    </head>
+    <body>
+        <?php
+            function allDividers($arg) {
+                $result = [];
+                for ($i = 1; $i < $arg; $i++) {
+                    if ($arg % $i == 0) {
+                        $result[] = $i;
+                    }
+                }
+                return $result;
+            }
+            
+            function sumArrayElements($arr) {
+                $sum = 0;
+                foreach ($arr as $elem) {
+                    $sum += $elem;
+                }
+                return $sum;
+            }
+            
+            $arr_i = [];
+            $arr_j = [];
+            for ($i = 2; $i <= 1000; $i++) {
+                for ($j = 2; $j <= 1000; $j++) {
+                    if (((sumArrayElements(allDividers($i))) == $j) && ((sumArrayElements(allDividers($j))) == $i) && ($i <> $j)) {
+                        $arr_i[] = $i;
+                        $arr_j[] = $j;
+                    }
+                }
+            }
+            
+            $arr_out = [];
+            for ($k = 0; $k < count($arr_i); $k++) {
+                if (!in_array($arr_i[$k], $arr_out)) {
+                    echo $arr_i[$k] . '  ' . $arr_j[$k] . '<br>';
+                    $arr_out[] = $arr_i[$k];
+                    $arr_out[] = $arr_j[$k];
+                }
+            }
+        ?>
+    </body>
+</html>
+
